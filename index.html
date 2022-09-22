@@ -6,8 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Database</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <script src="./js/index.js" type="module"></script>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="assets/banana-logo.jpg" alt="company logo" class="banana-logo">
+            Banana-Builds
+        </div>
+        <a href="#" class="toggle-button" title="open-close menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+            <ul>
+                <li class="item1"><a href="">home</a></li>
+                <li class="item2"><a href="">about</a></li>
+                <li class="item3"><a href="">log-in</a></li>
+                <li class="item4"><a href="">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="search">
+        <span class="material-symbols-rounded">search</span>
+        <input type="search" class="searchbar" placeholder="search here..." >
+    </div>
+    <main id="main">
+
+    </main>
+    <footer class="credits">
+        <img src="assets/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="themoviedb.org logo" class="tmdb-logo">
+        <p class="foot"> This product uses the TMDB API but is not endorsed or certified by TMDB." Any use of the TMDB logo in your application shall be less prominent than the logo or mark that primarily describes the application and your use of the TMDB logo shall not imply any endorsement by TMDB. When attributing TMDB, the attribution must be within your application's "About" or "Credits" type section.</p>
+    </footer>
+    <script src="./js/index.js"></script>
 </body>
 </html>
