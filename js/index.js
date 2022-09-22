@@ -13,8 +13,6 @@ function searchMoviesDB(){
     const apiURL = `https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=`
     const IMGPATH = "https://image.tmdb.org/t/p/w1280"
 
-    // const {poster_path, title, vote_avg, overview} = movie;
-    // console.log(movie)
 
     let resObj;
     let searchQ;
@@ -48,13 +46,6 @@ function searchMoviesDB(){
         return res
     }
 
-    // let fectCall = fetchURL(apiURL)
-    // .then((data) => {
-    //     // console.log(data, 'data')
-    //     resObj = data;
-    //     return buildItems(resObj)
-    // })
-
     function buildItems(movieObj){
         console.log(movieObj)
 
@@ -79,22 +70,6 @@ function searchMoviesDB(){
             main.appendChild(movieEl)
         }
 
-
-        // const movieEl = document.createElement('div');
-        // movieEl.classList.add = 'movieEl';
-        // movieEl.textContent = movieObj.results.title;
-
-        // const imgEl = document.createElement('img');
-        // imgEl.setAttribute('src', `${IMGPATH}${movieObj.results[0].poster_path}`)
-        // imgEl.setAttribute('alt', 'image of movie');
-        // imgEl.style.width = `94px`
-        // imgEl.style.height = `141px`
-
-        // movieEl.appendChild(imgEl)
-        // main.appendChild(movieEl)
-        // return movieEl
     }
-
-    // main.appendChild(buildItems())
 }
 document.addEventListener('DOMContentLoaded', searchMoviesDB)
