@@ -15,29 +15,49 @@ function searchMoviesDB(){
     const IMGPATH = "https://image.tmdb.org/t/p/w1280"
 
 
-    let resObj;
+    // let {poster_path, id, title} = resObj;
+    let resObj = [];
     let searchQ;
+    let hasBuiltDOM = false
+    let mainArr = []
 
     function getInputData(e){
         // retrieve search input and call fetch 
       const target = e.key
-      console.log(target)
+    //   console.log(target)
       let res = ''
 
+      console.log(main.hasChildNodes())
+
+            
       if(target === 'Enter'){
         res = searchBar.value
         searchBar.value = ''
         headingDiv.remove()
         main.style.backgroundImage = 'none'
+        
         let fectCall = fetchURL(apiURL, res)
         .then((data) => {
-            console.log(data)
-            resObj = data;
+
+            // remove previous search results and replace with new search data
+            if(hasBuiltDOM !== false){
+               const myChild = document.querySelectorAll('.movieEl')
+                for(let i=0; i<myChild.length; i++){
+                    myChild[i].remove()
+                    resObj = []
+                    for(let prop of data.results){
+                        resObj.push({title:prop.title, id: prop.id, poster_path: prop.poster_path})
+                    }
+                }
+            }else{
+                for(let prop of data.results){
+                    resObj.push({title:prop.title, id: prop.id, poster_path: prop.poster_path})
+                }
+            }
+
         return buildItems(resObj)
     })
       }
-
-      console.log(res)
     }
 
     searchBar.addEventListener('keydown', getInputData)
@@ -51,22 +71,21 @@ function searchMoviesDB(){
     }
 
     function buildItems(movieObj){
-        console.log(movieObj)
 
-        for(let m of movieObj.results){
-            console.log(m)
-            const movieEl = document.createElement('div');
-            movieEl.classList.add = 'movieEl';
+        const films = movieObj.forEach(el => {
+            // console.log(el)
+            const movieEl = document.createElement('div')
+            movieEl.className = 'movieEl'
             movieEl.style.border = 'black 4px solid';
             movieEl.style.width = 'auto'
             movieEl.style.height = 'auto'
-            
+
             const aLink = document.createElement('a');
             aLink.classList.add('link-tmdb');
-            aLink.setAttribute('href', `https://www.themoviedb.org/movie/${m.id}-${m.title.toLowerCase()}`);
+            aLink.setAttribute('href', `https://www.themoviedb.org/movie/${el.id}-${el.title.toLowerCase()}`);
 
             const imgEl = document.createElement('img');
-            imgEl.setAttribute('src', `${IMGPATH}${m.poster_path}`)
+            imgEl.setAttribute('src', `${IMGPATH}${el.poster_path}`)
             imgEl.setAttribute('alt', 'image of movie');
             imgEl.style.width = `121px`
             imgEl.style.height = `200px`
@@ -74,8 +93,8 @@ function searchMoviesDB(){
 
             // if no image is available
             let noImage;
-            if(m.poster_path === null){
-                imgEl.alt = `${m.title}`
+            if(el.poster_path === null){
+                imgEl.alt = `${el.title}`
                 noImage = document.createElement('p')
                 noImage.classList.add('noimage');
                 noImage.textContent = 'no image available';
@@ -86,12 +105,10 @@ function searchMoviesDB(){
             movieEl.appendChild(aLink)
             aLink.appendChild(imgEl)
             main.appendChild(movieEl)
-        }
 
-    }
-
-    // if a new search is done, clear old data and images 
-    function resetSearch(){
+            hasBuiltDOM = true;
+           
+        });
 
     }
 }
