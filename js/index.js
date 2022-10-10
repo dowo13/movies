@@ -156,6 +156,20 @@
             main.appendChild(movieEl)
 
             hasBuiltDOM = true;
+            // check for media matches 
+            if(mql.matches){
+                responsiveMovieImg(imgEl)
+                responsiveNoImage(movieEl)
+            }
+
+            function responsiveMovieImg(el){
+                el.style.height = '200px'
+                el.style.width = '121px'
+            }
+            function responsiveNoImage(el){
+                el.style.height = '200px'
+                el.style.width = '121px'
+            }
     
         });
 
@@ -235,11 +249,12 @@
         main.appendChild(footerDiv)
 
         if(mql.matches){
-            console.log(mql)
             responsiveButtonsCss(prevBut)
             responsiveTextCss(resTots)
             responsiveButtonsCss(nextBut)
         }
+
+      
 
         function responsiveButtonsCss(el){
             el.style.height = '2rem';
