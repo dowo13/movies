@@ -5,7 +5,7 @@
 }
 .navbar {
     display: flex;
-    background-color: #75aceb;
+    background: linear-gradient(to right,#000024, #001839, #004660, #003E55, #000024, #000000 ); /*#75aceb*/;
     justify-content: space-around;
     align-items: center;
     height: 7vh;
@@ -13,11 +13,11 @@
 .logo {
     font-size: 1.5rem;
     font-family: 'Courier New', Courier, monospace;
-    color: #ffff;
+    color: #fff;
 }
-.banana-logo {
-    height: 2rem;
-    width: 2rem;
+.co-logo {
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 50%;
 }
 .navbar-links ul {
@@ -29,7 +29,7 @@
 .navbar-links li a {
     text-decoration: none;
     padding: 1rem;
-    color: white;
+    color: #fff;
     display: block;
 }
 .navbar-links li:hover {
@@ -53,12 +53,27 @@
     background-color: #fff;
 }
 
+.aboutPage, .contactPage, .log-in-page {
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #fff;
+    background: linear-gradient(to right,#000024, #001839, #004660, #003E55, #000024, #000000 );
+    text-align: center;
+}
+
 /*
 responsive navbar code 
 */
+
 @media screen and (max-width: 600px) {
     .toggle-button {
         display: flex;
+    }
+    .toggle-button .bar{
+        height: 2px;
     }
     .navbar-links {
         display: none;
@@ -66,6 +81,7 @@ responsive navbar code
     }
     .navbar {
         flex-direction: column;
+        height: auto;
     }
     .navbar-links ul {
         width: 100%;
@@ -80,51 +96,78 @@ responsive navbar code
     .navbar-links.active {
         display: flex;
     }
+    .co-logo {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    .logo {
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+    }
+}
+@media screen and (max-width: 400px){
+   
+    .logo {
+        font-size: 1rem;
+    }
 }
 
 .search {
     width: 100vw;
     height: 5vh;
-    background-color: #a8a1a1;
+    background: linear-gradient(to right,#000024, #001839, #004660, #003E55, #000024, #000000 );
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.material-symbols-rounded {
-    background-color: #fff;
-    /* border-left: solid black 1px; */
-    height: 30px;
-    border: #000 3px solid;
-    border-right: none;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    padding-left: 0.5rem;
-}
-.searchbar {
+#searchBar:invalid {
     width: 20vw;
-    height: 30px;
-    /* border-radius: 20px; */
-    border: #000 3px solid;
-    border-left: none;
-    padding-left: 0.5rem;
+    height: 2.5rem;
+    border: #ff0000 5px solid;
+    padding: 0.5rem;
     outline: none;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+    background-image: url('./assets/search-icon.webp');
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position:  10px;
+    padding-left: 10px;
+    text-indent: 25px;
+    background-color: #a8a1a1;
 }
-.searchbar::placeholder {
+#searchBar {
+    width: 20vw;
+    height: 2.5rem;
+    border: #000 3px solid;
+    padding: 0.5rem;
+    outline: none;
+    border-radius: 20px;
+    background-image: url('./assets/search-icon.webp');
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position:  10px;
+    padding-left: 10px;
+    text-indent: 25px;
+ 
+}
+#searchBar::placeholder {
     font-size: 15px;
     color: #000;
     opacity: 0.8;
+    padding-left: 5px;
 }
+
 #main {
     min-height: 88vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    /* align-items: center; */
     flex-wrap: wrap;
     background-image: url('assets/movie-film-video-production-ss-1920-800x450.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #E1EAED;
+    background-blend-mode: color-burn;
 }
 .heading {
     text-align: center;
@@ -134,4 +177,31 @@ responsive navbar code
     font-family: 'Courier New', Courier, monospace;
     font-size: 40px;
     margin: 40px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    #searchBar:invalid {
+        width: 50vw;
+        height: 1.5rem;
+        border: #ff0000 3px solid;
+        background-size: 10px 10px;
+        text-indent: 15px;
+    }
+    #searchBar {
+        width: 50vw;
+        height: 1.5rem;
+        background-size: 10px 10px;
+        text-indent: 15px;
+    }
+    #searchBar::placeholder {
+        font-size: 12px;
+        padding-left: 3px;
+    }
+    .intro {
+        font-size: 1rem;
+    }
+    .aboutPage, .contactPage, .log-in-page {
+        font-size: 1rem;
+    }
 }
